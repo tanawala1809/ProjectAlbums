@@ -5,7 +5,7 @@ import AlbumDetails from "./Components/AlbumDetails";
 export default function RoutesFile() {
     return (
         <>
-            <BrowserRouter>
+            <BrowserRouter basename='ProjectAlbums'>
                 <Routes>
                     <Route path="/" element={<App />}></Route>
                     <Route path="/album/:id" element={<AlbumDetails />} />
