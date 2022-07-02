@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { useEffect } from "react"
+import PaginatedAlbums from "./Components/PaginatedAlbums";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    const [albums, setAlbums] = useState([]);
+    const [users, setUsers] = useState([]);
+
+    async function fetchUrl(url, index) {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (index === 0) {
+            setAlbums(data);
+        } else if (index === 1) {
+            setUsers(data);
+        }
+    }
+
+    useEffect(() => {
+        const urls = [
+            "https://jsonplaceholder.typicode.com/albums/",
+            "http://jsonplaceholder.typicode.com/users"
+        ];
+        
+        urls.map((currentURL, index) => {
+            fetchUrl(currentURL, index);
+        })
+    }, []);
+
+    return (
+        <>
+            <h2 style={{ textAlign: "center", marginTop: "25px" }}>List of Albums</h2>
+            <div>
+                {
+                    (albums.length !== 0) ? (
+                        <>
+                            <PaginatedAlbums albums={albums} users={users} />
+                        </>
+                    ) : (
+                        <>
+                        </>
+                    )
+                }
+            </div>
+        </>
+    )
 }
-
-export default App;

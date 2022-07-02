@@ -1,0 +1,32 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 50px;
+}
+
+
+.grid-item {
+    background: #4CAF50;
+    height: 250px;
+    width: 250px;
+    margin-bottom: 45px;
+    border-radius: 35px;
+}
+
+.textDecoration {
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-bottom: 35px;
+}
+
+.image {
+    height: 250px;
+    width: 250px;
+    border-radius: 35px;
+}
