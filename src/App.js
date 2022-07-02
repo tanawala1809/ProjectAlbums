@@ -20,7 +20,7 @@ export default function App() {
     useEffect(() => {
         const urls = [
             "https://jsonplaceholder.typicode.com/albums/",
-            "http://jsonplaceholder.typicode.com/users"
+            "https://jsonplaceholder.typicode.com/users"
         ];
         
         urls.map((currentURL, index) => {
